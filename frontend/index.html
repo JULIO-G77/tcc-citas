@@ -1,0 +1,51 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Gestión Citas - TCC</title>
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+  <h1>Gestión de Citas - Clínica</h1>
+
+  <section id="patient-form">
+    <h2>Crear / Actualizar Paciente</h2>
+    <form id="formPatient">
+      <input type="hidden" id="patientId" />
+      <input placeholder="Nombre" id="first_name" required />
+      <input placeholder="Apellido" id="last_name" required />
+      <input type="date" id="birth_date" />
+      <input placeholder="Género" id="gender" />
+      <input placeholder="Teléfono" id="phone" />
+      <input placeholder="Email" id="email" />
+      <button type="submit">Guardar Paciente</button>
+    </form>
+  </section>
+
+  <section id="patients-list">
+    <h2>Pacientes</h2>
+    <ul id="listPatients"></ul>
+  </section>
+
+  <section id="appointment-form">
+    <h2>Crear Cita</h2>
+    <form id="formAppointment">
+      <select id="selPatient"></select>
+    <select id="selDoctor">
+  <option value="">-- Seleccione doctor --</option>
+</select>
+
+      <input type="datetime-local" id="appointment_date" required />
+      <input placeholder="Motivo" id="reason" />
+      <button type="submit">Crear Cita</button>
+    </form>
+  </section>
+
+  <section id="appointments-list">
+    <h2>Citas</h2>
+    <ul id="listAppointments"></ul>
+  </section>
+
+  <script src="js/main.js"></script>
+</body>
+</html>
