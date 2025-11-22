@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Panel Administrativo - Hospital San Juan</title>
+    <link rel="stylesheet" href="/css/admin.css">
+</head>
+<body>
+    <!-- 🔐 LOGIN ADMIN -->
+    <div id="loginAdmin" class="admin-login-container">
+        <div class="admin-login-form">
+            <div class="hospital-header">
+                <h1>🏥 Hospital San Juan</h1>
+                <p>Panel Administrativo</p>
+            </div>
+            
+            <form id="adminLoginForm" class="login-form">
+                <h2>🔐 Acceso Administrativo</h2>
+                
+                <div class="form-group">
+                    <label for="adminUsername">Usuario:</label>
+                    <input type="text" id="adminUsername" required 
+                           placeholder="Ingrese su usuario administrativo">
+                </div>
+                
+                <div class="form-group">
+                    <label for="adminPassword">Contraseña:</label>
+                    <input type="password" id="adminPassword" required 
+                           placeholder="Ingrese su contraseña">
+                </div>
+                
+                <button type="submit" class="btn btn-primary btn-large">
+                    🚀 Ingresar al Panel
+                </button>
+                
+                <div class="login-info">
+                    <p><strong>Credenciales de prueba:</strong></p>
+                    <p>Usuario: <code>admin</code> | Contraseña: <code>admin123</code></p>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- 📊 DASHBOARD ADMIN (oculto inicialmente) -->
+    <div id="adminDashboard" class="admin-dashboard" style="display: none;">
+        <!-- 🎯 HEADER -->
+        <header class="admin-header">
+            <div class="header-left">
+                <h1>🏥 Panel Administrativo</h1>
+                <span id="adminWelcome">Bienvenido, Administrador</span>
+            </div>
+            <div class="header-right">
+                <span id="currentDateTime"></span>
+                <button onclick="adminLogout()" class="btn btn-secondary">
+                    🚪 Cerrar Sesión
+                </button>
+            </div>
+        </header>
+
+        <!-- 📈 STATS CARDS -->
+        <section class="stats-section">
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-icon">👥</div>
+                    <div class="stat-info">
+                        <h3 id="totalPatients">0</h3>
+                        <p>Pacientes Registrados</p>
+                    </div>
+                </div>
+                
+                <div class="stat-card">
+                    <div class="stat-icon">🩺</div>
+                    <div class="stat-info">
+                        <h3 id="totalDoctors">0</h3>
+                        <p>Doctores Activos</p>
+                    </div>
+                </div>
+                
+                <div class="stat-card">
+                    <div class="stat-icon">📅</div>
+                    <div class="stat-info">
+                        <h3 id="totalAppointments">0</h3>
+                        <p>Citas Totales</p>
+                    </div>
+                </div>
+                
+                <div class="stat-card">
+                    <div class="stat-icon">📊</div>
+                    <div class="stat-info">
+                        <h3 id="todayAppointments">0</h3>
+                        <p>Citas Hoy</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 🎛️ PANEL DE CONTROL -->
+        <section class="control-panel">
+            <div class="panel-tabs">
+                <button class="tab-btn active" onclick="showTab('patients')">👥 Pacientes</button>
+                <button class="tab-btn" onclick="showTab('doctors')">🩺 Doctores</button>
+                <button class="tab-btn" onclick="showTab('appointments')">📅 Citas</button>
+                <button class="tab-btn" onclick="showTab('reports')">📈 Reportes</button>
+            </div>
+
+            <!-- 👥 TABLA DE PACIENTES -->
+            <div id="patientsTab" class="tab-content active">
+                <div class="tab-header">
+                    <h2>👥 Gestión de Pacientes</h2>
+                    <div class="search-box">
+                        <input type="text" id="searchPatients" placeholder="🔍 Buscar pacientes...">
+                        <button onclick="searchPatients()" class="btn btn-primary">Buscar</button>
+                    </div>
+                </div>
+                <div class="table-container">
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Nombre</th>
+                                <th>Email</th>
+                                <th>Teléfono</th>
+                                <th>Total Citas</th>
+                                <th>Fecha Registro</th>
+                            </tr>
+                        </thead>
+                        <tbody id="patientsTableBody">
+                            <!-- Datos cargados por JavaScript -->
+                        </tbody>
+                    </table>
+                </div>
+                <div class="pagination" id="patientsPagination">
+                    <!-- Paginación -->
+                </div>
+            </div>
+
+            <!-- 🩺 TABLA DE DOCTORES -->
+            <div id="doctorsTab" class="tab-content">
+                <div class="tab-header">
+                    <h2>🩺 Gestión de Doctores</h2>
+                    <div class="filters">
+                        <select id="specialtyFilter" onchange="loadDoctors()">
+                            <option value="">Todas las especialidades</option>
+                        </select>
+                        <input type="text" id="searchDoctors" placeholder="🔍 Buscar doctores...">
+                        <button onclick="loadDoctors()" class="btn btn-primary">Filtrar</button>
+                    </div>
+                </div>
+                <div class="table-container">
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Nombre</th>
+                                <th>Especialidad</th>
+                                <th>Email</th>
+                                <th>Total Citas</th>
+                            </tr>
+                        </thead>
+                        <tbody id="doctorsTableBody">
+                            <!-- Datos cargados por JavaScript -->
+                        </tbody>
+                    </table>
+                </div>
+                <div class="pagination" id="doctorsPagination">
+                    <!-- Paginación -->
+                </div>
+            </div>
+
+            <!-- 📅 TABLA DE CITAS -->
+            <div id="appointmentsTab" class="tab-content">
+                <div class="tab-header">
+                    <h2>📅 Gestión de Citas</h2>
+                    <div class="action-buttons">
+                        <button class="btn btn-success" onclick="showCreateAppointmentModal()">
+                            ➕ Nueva Cita
+                        </button>
+                        <button class="btn btn-warning" onclick="editSelectedAppointment()">
+                            ✏️ Editar Cita
+                        </button>
+                        <button class="btn btn-danger" onclick="deleteSelectedAppointment()">
+                            🗑️ Cancelar Cita
+                        </button>
+                    </div>
+                    <!-- En la sección de filtros de citas -->
+<div class="filters">
+   <select id="statusFilter" onchange="loadAppointments(1)">
+    <option value="">Todas las citas (incluyendo canceladas)</option>
+    <option value="pendiente">Solo Pendientes</option>
+    <option value="confirmada">Solo Confirmadas</option>
+    <option value="completada">Solo Completadas</option>
+    <option value="cancelada">Solo Canceladas</option>
+</select>
+    <input type="date" id="dateFilter" onchange="loadAppointments(1)">
+    <button onclick="loadAppointments(1)" class="btn btn-primary">🔍 Filtrar</button>
+    <button onclick="clearAppointmentFilters()" class="btn btn-secondary">🧹 Limpiar</button>
+</div>
+                </div>
+                <div class="table-container">
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th width="50px">
+                                    <input type="checkbox" id="selectAllAppointments" onchange="toggleAllAppointments()">
+                                </th>
+                                <th>ID</th>
+                                <th>Paciente</th>
+                                <th>Doctor</th>
+                                <th>Fecha</th>
+                                <th>Estado</th>
+                                <th>Motivo</th>
+                                <th>Acciones</th>
+                            </tr>
+                        </thead>
+                        <tbody id="appointmentsTableBody">
+                            <!-- Datos cargados por JavaScript -->
+                        </tbody>
+                    </table>
+                </div>
+                <div class="pagination" id="appointmentsPagination">
+                    <!-- Paginación -->
+                </div>
+            </div>
+
+            <!-- 📈 REPORTES AVANZADOS -->
+            <div id="reportsTab" class="tab-content">
+                <div class="tab-header">
+                    <h2>📈 Reportes Avanzados</h2>
+                    <div class="report-controls">
+                        <select id="reportType">
+                            <option value="appointments_by_specialty">Citas por Especialidad</option>
+                            <option value="patient_activity">Actividad de Pacientes</option>
+                            <option value="doctor_performance">Rendimiento de Doctores</option>
+                        </select>
+                        <input type="date" id="startDate">
+                        <input type="date" id="endDate">
+                        <button onclick="generateReport()" class="btn btn-primary">📊 Generar Reporte</button>
+                    </div>
+                </div>
+                <div class="report-results" id="reportResults">
+                    <!-- Resultados del reporte -->
+                </div>
+            </div>
+        </section>
+
+        <!-- 🔔 NOTIFICACIONES -->
+        <div id="adminNotifications" class="notifications"></div>
+    </div>
+
+    <!-- 🎯 MODAL PARA CREAR/EDITAR CITAS -->
+    <div id="appointmentModal" class="modal" style="display: none;">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 id="appointmentModalTitle">➕ Nueva Cita</h3>
+                <span class="close" onclick="closeAppointmentModal()">&times;</span>
+            </div>
+            <div class="modal-body">
+                <form id="appointmentForm">
+                    <input type="hidden" id="appointmentId">
+                    
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="appointmentPatient">Paciente *</label>
+                            <select id="appointmentPatient" required>
+                                <option value="">Seleccionar paciente...</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="appointmentDoctor">Doctor *</label>
+                            <select id="appointmentDoctor" required>
+                                <option value="">Seleccionar doctor...</option>
+                            </select>
+                        </div>
+                    </div>
+                    
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="appointmentDate">Fecha y Hora *</label>
+                            <input type="datetime-local" id="appointmentDate" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="appointmentStatus">Estado</label>
+                            <select id="appointmentStatus">
+                                <option value="pendiente">Pendiente</option>
+                                <option value="confirmada">Confirmada</option>
+                                <option value="completada">Completada</option>
+                                <option value="cancelada">Cancelada</option>
+                            </select>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="appointmentReason">Motivo de la consulta</label>
+                        <textarea id="appointmentReason" rows="3" placeholder="Descripción del motivo de la cita..."></textarea>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" onclick="closeAppointmentModal()">Cancelar</button>
+                <button type="button" class="btn btn-primary" onclick="saveAppointment()">💾 Guardar Cita</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="/js/admin.js"></script>
+</body>
+</html>

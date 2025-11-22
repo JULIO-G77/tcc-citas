@@ -363,3 +363,132 @@ body::before {
   0% { transform: translate(-50%, -50%) rotate(0deg); }
   100% { transform: translate(-50%, -50%) rotate(360deg); }
 }
+/* ✅ ESTILOS PARA FORMULARIOS MEJORADOS */
+.form-group-advanced {
+    position: relative;
+    margin-bottom: 1.5rem;
+}
+
+.form-group-advanced label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: 600;
+    color: var(--light);
+    font-size: 0.9rem;
+}
+
+.form-help {
+    display: block;
+    margin-top: 0.25rem;
+    font-size: 0.8rem;
+    color: var(--gray);
+    font-style: italic;
+}
+
+.availability-info {
+    margin: 1.5rem 0;
+}
+
+.availability-card {
+    background: rgba(59, 130, 246, 0.1);
+    border: 1px solid rgba(59, 130, 246, 0.3);
+    border-radius: 8px;
+    padding: 1rem;
+    border-left: 4px solid var(--primary);
+}
+
+.availability-card h4 {
+    margin: 0 0 0.5rem 0;
+    color: var(--primary-light);
+    font-size: 1rem;
+}
+
+.availability-card p {
+    margin: 0;
+    color: var(--light);
+    font-size: 0.9rem;
+}
+
+/* ✅ ESTADO DE CARGA */
+.loading {
+    opacity: 0.7;
+    pointer-events: none;
+    position: relative;
+}
+
+.loading::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 20px;
+    height: 20px;
+    border: 2px solid transparent;
+    border-top: 2px solid var(--primary-light);
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    0% { transform: translate(-50%, -50%) rotate(0deg); }
+    100% { transform: translate(-50%, -50%) rotate(360deg); }
+}
+
+/* ✅ SELECT DESHABILITADO MEJORADO */
+select:disabled {
+    background: rgba(255, 255, 255, 0.05);
+    color: var(--gray);
+    cursor: not-allowed;
+}
+
+select:disabled option {
+    color: var(--gray);
+}
+/* Estilos para las acciones de citas */
+.appointment-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    margin-bottom: 10px;
+}
+
+.appointment-info {
+    flex: 1;
+}
+
+.appointment-actions {
+    display: flex;
+    gap: 10px;
+}
+
+.btn-small {
+    padding: 5px 10px;
+    font-size: 12px;
+}
+
+.btn-danger {
+    background-color: #dc3545;
+    color: white;
+}
+
+.btn-danger:hover {
+    background-color: #c82333;
+}
+
+.status-pendiente {
+    color: #ffc107;
+    font-weight: bold;
+}
+
+.status-confirmada {
+    color: #28a745;
+    font-weight: bold;
+}
+
+.status-cancelada {
+    color: #dc3545;
+    font-weight: bold;
+}

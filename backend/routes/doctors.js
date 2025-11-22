@@ -1,17 +1,10 @@
+// doctors.js (routes)
+// [ETIQUETA] Define rutas REST para doctores
 const express = require('express');
 const router = express.Router();
-const { getConnection } = require('../config/mysql');
+const doctorsCtrl = require('../controllers/doctorsCtrl');
 
-router.get('/', async (req, res) => {
-  try {
-    const conn = await getConnection();
-    const [rows] = await conn.execute('SELECT * FROM doctors');
-    await conn.end();
-    res.json(rows);
-  } catch (err) {
-    console.error('Error cargando doctores', err);
-    res.status(500).json({ error: 'Error obteniendo doctores' });
-  }
-});
+router.get('/', doctorsCtrl.getDoctors);                    // Obtener todos los doctores
+router.get('/available', doctorsCtrl.getAvailableDoctors);  // ✅ Doctores disponibles
 
 module.exports = router;

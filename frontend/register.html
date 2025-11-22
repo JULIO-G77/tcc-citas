@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hospital San Juan de Pomoceno - Registro</title>
+    <!-- [ETIQUETA] Enlace a hoja de estilos CSS -->
+    <link rel="stylesheet" href="/css/styles.css">
+</head>
+<body>
+    <div class="login-container">
+        <!-- [ETIQUETA] Header informativo del hospital -->
+        <div class="hospital-header">
+            <h1>🏥 Hospital San Juan de Pomoceno</h1>
+            <p>Bolívar - Crear Nueva Cuenta</p>
+        </div>
+
+        <!-- [ETIQUETA] Formulario de registro de paciente -->
+        <div class="login-form">
+            <h2>Registro de Paciente</h2>
+            <form id="registerForm">
+                <div class="form-grid">
+                    <input type="text" id="regFirstName" placeholder="Nombre" required>
+                    <input type="text" id="regLastName" placeholder="Apellido" required>
+                    <input type="date" id="regBirthDate" placeholder="Fecha de Nacimiento">
+                    <select id="regGender">
+                        <option value="">Género</option>
+                        <option value="masculino">Masculino</option>
+                        <option value="femenino">Femenino</option>
+                        <option value="otro">Otro</option>
+                    </select>
+                    <input type="tel" id="regPhone" placeholder="📞 Teléfono" required>
+                    <input type="email" id="regEmail" placeholder="📧 Correo electrónico" required>
+                    <input type="password" id="regPassword" placeholder="🔒 Contraseña" required>
+                    <input type="password" id="regConfirmPassword" placeholder="🔒 Confirmar Contraseña" required>
+                </div>
+                <button type="submit" class="btn btn-primary">Crear Cuenta</button>
+            </form>
+            
+            <!-- [ETIQUETA] Enlaces de navegación -->
+            <div class="login-links">
+                <p>¿Ya tienes cuenta? <a href="/login">Inicia sesión aquí</a></p>
+            </div>
+        </div>
+    </div>
+
+    <!-- [ETIQUETA] Script de autenticación -->
+    <script src="/js/auth.js"></script>
+</body>
+</html>

@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mi Cuenta - Hospital San Juan de Pomoceno</title>
+    <!-- [ETIQUETA] Enlace a hoja de estilos CSS -->
+    <link rel="stylesheet" href="/css/styles.css">
+</head>
+<body>
+    <div class="dashboard-container">
+        <!-- [ETIQUETA] Header con información del hospital y usuario -->
+        <header class="dashboard-header">
+            <div class="hospital-info">
+                <h1>🏥 Hospital San Juan de Pomoceno</h1>
+                <p>Bolívar - Panel del Paciente</p>
+            </div>
+            <div class="user-info">
+                <span id="userWelcome">Bienvenido, Usuario</span>
+                <button onclick="logout()" class="btn btn-secondary">Cerrar Sesión</button>
+            </div>
+        </header>
+
+        <!-- [ETIQUETA] Sección de perfil del paciente -->
+        <section class="section-card">
+            <h2>👤 Mi Perfil</h2>
+            <div id="patientProfile">
+                <!-- [ETIQUETA] Contenido dinámico del perfil del paciente -->
+                <p>Cargando información del perfil...</p>
+            </div>
+        </section>
+
+<!-- CREAR CITA MEJORADO -->
+<section class="section-card">
+    <h2>📅 Agendar Nueva Cita</h2>
+    <form id="formAppointment">
+        <div class="form-grid-advanced">
+            <!-- PRIMERO SELECCIONAR FECHA -->
+            <div class="form-group-advanced">
+                <label for="appointment_date">📅 Fecha y Hora</label>
+                <input type="datetime-local" id="appointment_date" class="input-modern" required>
+                <small id="dateHelp" class="form-help">Seleccione fecha y hora deseada</small>
+            </div>
+
+            <!-- LUEGO ESPECIALIDAD -->
+            <div class="form-group-advanced">
+                <label for="selSpecialty">🎯 Especialidad Médica</label>
+                <select id="selSpecialty" class="input-modern select-modern" required>
+                    <option value="">-- Primero seleccione fecha --</option>
+                    <option value="Cardiología">❤️ Cardiología</option>
+                    <option value="Pediatría">👶 Pediatría</option>
+                    <option value="Dermatología">🔬 Dermatología</option>
+                    <option value="Ginecología">🌸 Ginecología</option>
+                    <option value="Ortopedia">🦴 Ortopedia</option>
+                    <option value="Psicología">🧠 Psicología</option>
+                </select>
+                <small id="specialtyHelp" class="form-help">Elija la especialidad requerida</small>
+            </div>
+
+            <!-- FINALMENTE DOCTOR DISPONIBLE -->
+            <div class="form-group-advanced">
+                <label for="selDoctor">👨‍⚕️ Doctor Disponible</label>
+                <select id="selDoctor" class="input-modern select-modern" required disabled>
+                    <option value="">-- Primero seleccione especialidad --</option>
+                </select>
+                <small id="doctorHelp" class="form-help">Doctores disponibles para la fecha y especialidad seleccionadas</small>
+            </div>
+
+            <!-- MOTIVO DE LA CONSULTA -->
+            <div class="form-group-advanced">
+                <label for="reason">📝 Motivo de la Consulta</label>
+                <input type="text" id="reason" class="input-modern" placeholder="Describa el motivo de su visita" required>
+                <small class="form-help">Ej: Control rutinario, dolor de cabeza, etc.</small>
+            </div>
+        </div>
+
+        <!-- INFORMACIÓN DE DISPONIBILIDAD -->
+        <div id="availabilityInfo" class="availability-info" style="display: none;">
+            <div class="availability-card">
+                <h4>🕐 Información de Disponibilidad</h4>
+                <p id="availabilityText">Los doctores se cargarán según su selección</p>
+            </div>
+        </div>
+
+        <button type="submit" class="btn btn-primary" id="submitAppointment">
+            <span>✅ Agendar Cita</span>
+        </button>
+    </form>
+</section>
+
+<!-- En la sección de citas programadas -->
+<section class="section-card">
+    <h2>📋 Mis Citas Programadas</h2>
+    <ul id="listAppointments">
+        <!-- Las citas se cargarán aquí con JavaScript -->
+    </ul>
+</section>
+    </div>
+
+    <!-- [ETIQUETA] Script principal del dashboard -->
+    <script src="/js/dashboard.js"></script>
+</body>
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hospital San Juan de Pomoceno - Login</title>
+    <!-- [ETIQUETA] Enlace a hoja de estilos CSS -->
+    <link rel="stylesheet" href="/css/styles.css">
+</head>
+<body>
+    <div class="login-container">
+        <!-- [ETIQUETA] Header informativo del hospital -->
+        <div class="hospital-header">
+            <h1>🏥 Hospital San Juan de Nepomuceno</h1>
+            <p>Bolívar - Sistema de Gestión de Citas Médicas</p>
+        </div>
+
+        <!-- [ETIQUETA] Formulario de inicio de sesión -->
+        <div class="login-form">
+            <h2>Iniciar Sesión</h2>
+            <form id="loginForm">
+                <div class="form-group">
+                    <input type="email" id="loginEmail" placeholder="📧 Correo electrónico" required>
+                </div>
+                <div class="form-group">
+                    <input type="password" id="loginPassword" placeholder="🔒 Contraseña" required>
+                </div>
+                <button type="submit" class="btn btn-primary">Ingresar</button>
+            </form>
+            
+            <!-- [ETIQUETA] Enlaces de navegación -->
+            <div class="login-links">
+                <p>¿No tienes cuenta? <a href="/register">Regístrate aquí</a></p>
+            </div>
+        </div>
+    </div>
+
+    <!-- [ETIQUETA] Script de autenticación -->
+    <script src="/js/auth.js"></script>
+</body>
+</html>
